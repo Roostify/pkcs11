@@ -31,13 +31,14 @@ def pkcs11_version
   File.read_utf(file)[version_re, 2]
 end
 
-hoe = Hoe.spec 'pkcs11_luna' do
+hoe = Hoe.spec 'roostify_pkcs11_luna' do
   developer('SafeNet', 'support@safenet-inc.com')
-  extra_deps << ['pkcs11', "= #{pkcs11_version}"]
+  developer('Zee@Roostify', 'zee@roostify.com')
+  extra_deps << ['roostify-pkcs11', "= #{pkcs11_version}"]
   extra_dev_deps << ['yard', '>= 0.6']
   extra_dev_deps << ['rake-compiler', '>= 0.7']
 
-  self.url = 'http://github.com/larskanis/pkcs11'
+  self.urls = ['http://github.com/roostify/pkcs11']
   self.summary = 'SafeNet-Luna extensions for PKCS#11-Ruby'
   self.description = 'This module allows Ruby programs to use vendor extensions for SafeNet Luna.'
   self.version = pkcs11_version

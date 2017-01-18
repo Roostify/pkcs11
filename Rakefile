@@ -24,17 +24,18 @@ Hoe.plugin :bundler
 # Build a Manifest file to satisfy hoe.
 IO.write("Manifest.txt", `git ls-files`)
 
-hoe = Hoe.spec 'pkcs11' do
+hoe = Hoe.spec 'roostify-pkcs11' do
   developer('Ryosuke Kutsuna', 'ryosuke@deer-n-horse.jp')
   developer('GOTOU Yuuzou', 'gotoyuzo@notwork.org')
   developer('Lars Kanis', 'kanis@comcard.de')
+  developer('Zee Spencer', 'zee@roostify.com')
   extra_dev_deps << ['yard', '>= 0.6']
   extra_dev_deps << ['rake-compiler', '~> 0.9.2']
   extra_dev_deps << ['rake-compiler-dock', '~> 0.6.0']
   extra_dev_deps << ['minitest', '~> 5.7']
   extra_dev_deps << ['hoe-bundler', '~> 1.0']
 
-  self.urls = ['http://github.com/larskanis/pkcs11']
+  self.urls = ['http://github.com/roostify/pkcs11']
   self.summary = 'PKCS#11 binding for Ruby'
   self.description = 'This module allows Ruby programs to interface with "RSA Security Inc. PKCS #11 Cryptographic Token Interface (Cryptoki)".'
 
@@ -44,7 +45,7 @@ hoe = Hoe.spec 'pkcs11' do
   spec_extras[:files] = `git ls-files`.split("\n").reject{|f| f=~/^pkcs11_/ }
   spec_extras[:files] += GENERATED_FILES
   spec_extras[:has_rdoc] = 'yard'
-  self.rdoc_locations << "http://www.rubydoc.info/gems/pkcs11"
+  self.rdoc_locations << "http://www.rubydoc.info/gems/roostify-pkcs11"
 end
 
 Rake::ExtensionTask.new('pkcs11_ext', hoe.spec) do |ext|
